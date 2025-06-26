@@ -1,5 +1,7 @@
 package uce.edu.web.api.service;
 
+import java.util.List;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import uce.edu.web.api.repository.IProfesorRepo;
@@ -15,5 +17,11 @@ public class ProfesorServiceImpl implements IProfesorService{
     public Profesor buscarPorId(Integer id) {
         return profesorRepo.recuperaProfesorPorId(id);  
     }
+
+    @Override
+    public List<Profesor> buscarTodos() {
+        return profesorRepo.recuperarTodos();
+    }
+    
 
 }
