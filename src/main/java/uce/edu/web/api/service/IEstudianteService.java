@@ -9,4 +9,9 @@ public interface IEstudianteService {
     public Estudiante buscarPorID(Integer Id);
     public List<Estudiante> buscarTodos();
 
+    public void actualizarPorId(Estudiante estudiante);
+    public void actualizarParcialPorId(Estudiante estudiante);
+    public void borrarPorId(Integer id);
+    public void guardar(Estudiante estudiante); 
+
 }
