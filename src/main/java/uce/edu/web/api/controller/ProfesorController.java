@@ -22,7 +22,7 @@ public class  ProfesorController {
     private IProfesorService profesorService;
 
     @GET
-    @Path("/consulta/{id}")
+    @Path("/{id}")
     public Profesor consultarPorId(@PathParam ("id") Integer id){
         return profesorService.buscarPorId(id);
     }
@@ -36,25 +36,43 @@ public class  ProfesorController {
     @POST
     @Path("")
     public void guardar (@RequestBody Profesor profesor){
-
+        profesorService.insertarProfesor(profesor);
     } 
 
     @PUT
     @Path("/{id}")
     public void actualizarPorId(@RequestBody Profesor profesor,@PathParam("id") Integer id){
-
+        profesor.setId(id);
+        profesorService.actualizarProfesor(profesor);
     }
 
     @PATCH
     @Path("/{id}")
     public void actualizarParcial(@RequestBody Profesor profesor,@PathParam("id") Integer id){
-
+        Profesor p = consultarPorId(id);
+        profesor.setId(id);
+        if (profesor.getApellido()!= null) {
+            p.setApellido(profesor.getApellido());
+        }
+        if (profesor.getNombre()!= null) {
+            p.setNombre(profesor.getNombre());
+        }
+        if (profesor.getCorreo()!= null) {
+            p.setCorreo(profesor.getCorreo());
+        }
+        if (profesor.getMateria()!= null) {
+            p.setMateria(profesor.getMateria());
+        }
+        if (profesor.getSalario()!= null) {
+            p.setSalario(profesor.getSalario());
+        }
+        profesorService.actualizarProfesor(p); 
     }
 
     @DELETE
     @Path("/{id}")
-    public void borrarPorId(@RequestBody Profesor profesor,@PathParam("id") Integer id){
-
+    public void borrarPorId(@PathParam("id") Integer id){
+        profesorService.borrarPorId(id);
     }
 
 
