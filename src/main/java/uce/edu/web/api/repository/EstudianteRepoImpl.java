@@ -1,7 +1,6 @@
 package uce.edu.web.api.repository;
 
 import java.util.List;
-
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -24,9 +23,10 @@ public class EstudianteRepoImpl implements IEstudianteRepo{
     }
 
     @Override
-    public List<Estudiante> seleccionarTodos() {
+    public List<Estudiante> seleccionarTodos(String genero) {
         
-        TypedQuery<Estudiante> myQuery = this.entityManager.createQuery("SELECT e FROM Estudiante e",Estudiante.class);
+        TypedQuery<Estudiante> myQuery = this.entityManager.createQuery("SELECT e FROM Estudiante e WHERE e.genero =:genero",Estudiante.class);
+        myQuery.setParameter("genero", genero);
         return myQuery.getResultList();
     }
 
