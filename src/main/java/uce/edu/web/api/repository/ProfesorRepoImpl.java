@@ -22,8 +22,9 @@ public class ProfesorRepoImpl implements IProfesorRepo {
     }
 
     @Override
-    public List<Profesor> recuperarTodos() {
-        TypedQuery<Profesor> typedQuery = this.entityManager.createQuery("SELECT e FROM Profesor  e",Profesor.class);
+    public List<Profesor> recuperarTodos(String contrato) {
+        TypedQuery<Profesor> typedQuery = this.entityManager.createQuery("SELECT e FROM Profesor e WHERE e.contrato =:contrato ",Profesor.class);
+        typedQuery.setParameter("contrato", contrato);
         return typedQuery.getResultList();
     }
 

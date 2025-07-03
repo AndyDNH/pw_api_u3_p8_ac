@@ -31,6 +31,9 @@ public class Profesor {
     @Column(name = "profe_salario")
     private Integer salario; 
 
+    @Column(name = "profe_contrato")
+    private String contrato; 
+
     public Integer getId() {
         return id;
     }
@@ -78,8 +81,15 @@ public class Profesor {
     public void setMateria(String materia) {
         this.materia = materia;
     }
+
+    public String getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(String contrato) {
+        this.contrato = contrato;
+    }
     
 
-    
 
 }
