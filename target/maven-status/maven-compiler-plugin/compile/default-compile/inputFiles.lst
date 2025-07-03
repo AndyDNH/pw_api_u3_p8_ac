@@ -6,6 +6,7 @@ C:\Users\fing.labcom\Documents\WEB\pw_api_u3_p8_ac\src\main\java\uce\edu\web\api
 C:\Users\fing.labcom\Documents\WEB\pw_api_u3_p8_ac\src\main\java\uce\edu\web\api\repository\IEstudianteRepo.java
 C:\Users\fing.labcom\Documents\WEB\pw_api_u3_p8_ac\src\main\java\uce\edu\web\api\repository\IProfesorRepo.java
 C:\Users\fing.labcom\Documents\WEB\pw_api_u3_p8_ac\src\main\java\uce\edu\web\api\repository\modelo\Estudiante.java
+C:\Users\fing.labcom\Documents\WEB\pw_api_u3_p8_ac\src\main\java\uce\edu\web\api\repository\modelo\LocalDateTimeAdapter.java
 C:\Users\fing.labcom\Documents\WEB\pw_api_u3_p8_ac\src\main\java\uce\edu\web\api\repository\modelo\Profesor.java
 C:\Users\fing.labcom\Documents\WEB\pw_api_u3_p8_ac\src\main\java\uce\edu\web\api\repository\ProfesorRepoImpl.java
 C:\Users\fing.labcom\Documents\WEB\pw_api_u3_p8_ac\src\main\java\uce\edu\web\api\service\EstudianteServiceImpl.java
