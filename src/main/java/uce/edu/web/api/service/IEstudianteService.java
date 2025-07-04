@@ -8,7 +8,7 @@ import uce.edu.web.api.service.to.EstudianteTo;
 
 public interface IEstudianteService {
 
-    public EstudianteTo buscarPorID(Integer Id, UriInfo uriInfo);
+    public EstudianteTo buscarPorId(Integer Id, UriInfo uriInfo);
     public List<Estudiante> buscarTodos(String genero);
 
     public void actualizarPorId(Estudiante estudiante);

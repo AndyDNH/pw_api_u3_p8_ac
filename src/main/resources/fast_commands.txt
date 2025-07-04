@@ -1,5 +1,8 @@
 mvn clean package -Dquarkus.package.type=uber-jar
 
+$ git log -1 --format="%H" ,  obtener hash
+https://github.com/AndyDNH/pw_api_u3_p8_ac/commit/"hash"
+
 200 OK, 201 Created, 204 No Content
 
 400 Bad Request algo en el contenido esta incorrecto

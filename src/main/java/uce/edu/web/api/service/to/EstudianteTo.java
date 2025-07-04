@@ -14,7 +14,7 @@ public class EstudianteTo  {
     private String apellido;
     private LocalDateTime fechaNacimiento;
     private String genero;
-    private Map<String,String> _links = new HashMap<>();
+    public Map<String,String> _links = new HashMap<>();
 
     public EstudianteTo(Integer id, String nombre, String apellido, LocalDateTime fechaNacimiento, String genero, UriInfo uriInfo) {
         this.id = id;

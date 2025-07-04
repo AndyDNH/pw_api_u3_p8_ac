@@ -39,10 +39,9 @@ public class EstudianteController extends BaseControllador {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response consultarPorId(@PathParam("id") Integer id,@Context UriInfo uriInfo){
 
-        EstudianteTo estu = this.estudianteService.buscarPorID(id,uriInfo);
+        EstudianteTo estu = this.estudianteService.buscarPorId(id,uriInfo);
         return Response.status(227).entity(estu).build();
     }
 
@@ -105,9 +104,10 @@ public class EstudianteController extends BaseControllador {
     // /1/hijos
     @GET
     @Path("/{id}/hijos")
-    public List<Hijo> obtenerHijosPorId(@PathParam("id") String id){
+    public List<Hijo> obtenerHijosPorId(@PathParam("id") Integer id){
         Hijo h1 = new Hijo();
         h1.setNombre("Diana");
+
         Hijo h2 = new Hijo();
         h2.setNombre("Ronald");
 
