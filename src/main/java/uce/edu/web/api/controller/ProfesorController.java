@@ -1,11 +1,5 @@
 package uce.edu.web.api.controller;
-
-import java.util.List;
-
-import javax.print.DocFlavor.READER;
-
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
-
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -22,7 +16,7 @@ import jakarta.ws.rs.core.Response;
 import uce.edu.web.api.repository.modelo.Profesor;
 import uce.edu.web.api.service.IProfesorService;
 
-@Path("/profesor")
+@Path("/profesores")
 public class  ProfesorController {
 
     @Inject
