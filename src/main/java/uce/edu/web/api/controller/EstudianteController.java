@@ -25,6 +25,7 @@ import jakarta.ws.rs.core.UriInfo;
 import uce.edu.web.api.repository.modelo.Estudiante;
 import uce.edu.web.api.repository.modelo.Hijo;
 import uce.edu.web.api.service.IEstudianteService;
+import uce.edu.web.api.service.IHijoService;
 import uce.edu.web.api.service.to.EstudianteTo;
 
 // Tambien llamado Recurso/Resource
@@ -35,6 +36,9 @@ public class EstudianteController extends BaseControllador {
 
     @Inject
     private IEstudianteService estudianteService;
+
+    @Inject
+    private IHijoService hijoService;
 
     @GET
     @Path("/{id}")
@@ -105,18 +109,7 @@ public class EstudianteController extends BaseControllador {
     @GET
     @Path("/{id}/hijos")
     public List<Hijo> obtenerHijosPorId(@PathParam("id") Integer id){
-        Hijo h1 = new Hijo();
-        h1.setNombre("Diana");
-
-        Hijo h2 = new Hijo();
-        h2.setNombre("Ronald");
-
-        List<Hijo> hijos =  new ArrayList<>();
-        hijos.add(h1);
-        hijos.add(h2);
-
-        return hijos;
-    }
+        return this.hijoService.buscarPorEstudianteId(id);
 
 
 }
