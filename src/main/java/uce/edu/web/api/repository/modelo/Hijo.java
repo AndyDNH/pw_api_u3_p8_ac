@@ -1,8 +1,11 @@
 package uce.edu.web.api.repository.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.quarkus.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -23,7 +26,8 @@ public class Hijo {
     @Column(name = "hijo_apellido")
     private String apellido;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hijo_estudiante")
     private Estudiante estudiante; 
 
@@ -50,5 +54,15 @@ public class Hijo {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    
     
 }

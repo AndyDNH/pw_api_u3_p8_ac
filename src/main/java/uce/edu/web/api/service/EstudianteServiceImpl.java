@@ -4,10 +4,8 @@ import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.core.UriInfo;
 import uce.edu.web.api.repository.IEstudianteRepo;
 import uce.edu.web.api.repository.modelo.Estudiante;
-import uce.edu.web.api.service.to.EstudianteTo;
 
 // A diferencia de repository Service solo tiene AplicationScoped
 @ApplicationScoped
@@ -17,11 +15,12 @@ public class EstudianteServiceImpl implements IEstudianteService {
     private IEstudianteRepo estudianteRepo;
     
     @Override
-    public EstudianteTo buscarPorId(Integer id, UriInfo uriInfo) {
-        Estudiante e1 = this.estudianteRepo.seleccionarPorID(id);
-        EstudianteTo e =  new EstudianteTo(e1.getId(), e1.getNombre(), e1.getApellido(), e1.getFechaNacimiento(),
-         e1.getGenero(), uriInfo);
-        return e;
+    public Estudiante buscarPorId(Integer id) {
+        // Estudiante e1 = 
+        return this.estudianteRepo.seleccionarPorID(id);
+    //     EstudianteTo e =  new EstudianteTo(e1.getId(), e1.getNombre(), e1.getApellido(), e1.getFechaNacimiento(),
+    //      e1.getGenero(), uriInfo);
+    //     return e;
     }
 
     @Override

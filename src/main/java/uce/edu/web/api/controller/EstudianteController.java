@@ -26,6 +26,7 @@ import uce.edu.web.api.repository.modelo.Estudiante;
 import uce.edu.web.api.repository.modelo.Hijo;
 import uce.edu.web.api.service.IEstudianteService;
 import uce.edu.web.api.service.IHijoService;
+import uce.edu.web.api.service.mapper.EstudianteMapper;
 import uce.edu.web.api.service.to.EstudianteTo;
 
 // Tambien llamado Recurso/Resource
@@ -45,8 +46,9 @@ public class EstudianteController extends BaseControllador {
     @Produces(MediaType.APPLICATION_JSON)
     public Response consultarPorId(@PathParam("id") Integer id,@Context UriInfo uriInfo){
 
-        EstudianteTo estu = this.estudianteService.buscarPorId(id,uriInfo);
-        return Response.status(227).entity(estu).build();
+        EstudianteTo estu = EstudianteMapper.toTo(this.estudianteService.buscarPorId(id));
+        estu.buildURI(uriInfo);
+        return Response.status(277).entity(estu).build();
     }
 
 
@@ -110,6 +112,8 @@ public class EstudianteController extends BaseControllador {
     @Path("/{id}/hijos")
     public List<Hijo> obtenerHijosPorId(@PathParam("id") Integer id){
         return this.hijoService.buscarPorEstudianteId(id);
+    
+    }
 
 
 }
