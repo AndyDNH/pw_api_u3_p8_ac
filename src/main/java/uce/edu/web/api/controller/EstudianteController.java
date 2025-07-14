@@ -44,64 +44,58 @@ public class EstudianteController extends BaseControllador {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response consultarPorId(@PathParam("id") Integer id,@Context UriInfo uriInfo){
-
+    public Response consultarPorId(@PathParam("id") Integer id, @Context UriInfo uriInfo) {
         EstudianteTo estu = EstudianteMapper.toTo(this.estudianteService.buscarPorId(id));
         estu.buildURI(uriInfo);
         return Response.status(277).entity(estu).build();
     }
 
-
     // ?genero=F&provincia=pichincha
     @GET
     @Path("")
-    public Response consultarTodos(@QueryParam("genero") String genero,@QueryParam("provincia")String provincia ){
+    public Response consultarTodos(@QueryParam("genero") String genero, @QueryParam("provincia") String provincia) {
         System.out.println(provincia);
         return Response.status(Response.Status.OK).entity(this.estudianteService.buscarTodos(genero)).build();
-        
     }
 
     @POST
     @Path("")
-    @Operation(
-        summary = "Guardar Estudiante",
-        description = "Esta capacidad permite guardar un estudiante ...."
-    )
-    public Response guardar (@RequestBody Estudiante estudiante){
-        this.estudianteService.guardar(estudiante);
+    @Operation(summary = "Guardar Estudiante", description = "Esta capacidad permite guardar un estudiante ....")
+    public Response guardar(@RequestBody EstudianteTo estudianteTo) {
+        this.estudianteService.guardar(estudianteTo);
         return Response.status(Response.Status.OK).build();
 
-    } 
+    }
 
     @PUT
     @Path("/{id}")
-    public Response actualizarPorId(@RequestBody Estudiante estudiante,@PathParam("id") Integer id){
-        estudiante.setId(id);
-        this.estudianteService.actualizarPorId(estudiante);
+    public Response actualizarPorId(@RequestBody EstudianteTo estudianteTo, @PathParam("id") Integer id) {
+        estudianteTo.setId(id);
+        this.estudianteService.actualizarPorId(estudianteTo);
         return Response.status(Response.Status.OK).build();
     }
 
-    // @PATCH
-    // @Path("/{id}")
-    // public Response actualizarParcialPorId(@RequestBody Estudiante estudiante, @PathParam("id") Integer id){
-    //     estudiante.setId(id);
-    //     Estudiante e = this.estudianteService.buscarPorID(id);
-    //     if (estudiante.getApellido() != null) {
-    //         e.setApellido(estudiante.getApellido());
-    //     }
-    //     if (estudiante.getFechaNacimiento() != null) {
-    //         e.setFechaNacimiento(estudiante.getFechaNacimiento());
-    //     }
-    //     if (estudiante.getNombre() != null) {
-    //         e.setNombre(estudiante.getNombre());
-    //     }
-    //     this.estudianteService.actualizarParcialPorId(e);
-    //     return Response.status(Response.Status.OK).build();
-    // }
+    @PATCH
+    @Path("/{id}")
+    public Response actualizarParcialPorId(@RequestBody EstudianteTo estudianteTo, @PathParam("id") Integer id) {
+        estudianteTo.setId(id);
+        EstudianteTo eTo = EstudianteMapper.toTo(this.estudianteService.buscarPorId(id));
+        if (estudianteTo.getApellido() != null) {
+            eTo.setApellido(estudianteTo.getApellido());
+        }
+        if (estudianteTo.getFechaNacimiento() != null) {
+            eTo.setFechaNacimiento(estudianteTo.getFechaNacimiento());
+        }
+        if (estudianteTo.getNombre() != null) {
+            eTo.setNombre(estudianteTo.getNombre());
+        }
+        this.estudianteService.actualizarParcialPorId((eTo));
+        return Response.status(Response.Status.OK).build();
+    }
 
     @DELETE
     @Path("/{id}")
-    public Response borrarPorId(@PathParam("id") Integer id){
+    public Response borrarPorId(@PathParam("id") Integer id) {
         this.estudianteService.borrarPorId(id);
         return Response.status(Response.Status.OK).build();
 
@@ -110,10 +104,9 @@ public class EstudianteController extends BaseControllador {
     // /1/hijos
     @GET
     @Path("/{id}/hijos")
-    public List<Hijo> obtenerHijosPorId(@PathParam("id") Integer id){
+    public List<Hijo> obtenerHijosPorId(@PathParam("id") Integer id) {
         return this.hijoService.buscarPorEstudianteId(id);
-    
-    }
 
+    }
 
 }
