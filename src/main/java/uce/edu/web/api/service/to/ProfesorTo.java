@@ -6,6 +6,7 @@ import java.util.Map;
 
 import jakarta.ws.rs.core.UriBuilder;
 import jakarta.ws.rs.core.UriInfo;
+
 import uce.edu.web.api.controller.ProfesorController;
 
 
@@ -18,23 +19,8 @@ public class ProfesorTo {
     private String materia; 
     private Integer salario; 
     private String contrato;
-    public Map<String,String> _links = new HashMap<>(); 
+    private Map<String,String> _links = new HashMap<>(); 
     
-    public ProfesorTo(Integer id, String nombre, String apellido, String correo, String materia, Integer salario,
-            String contrato,UriInfo uriInfo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.materia = materia;
-        this.salario = salario;
-        this.contrato = contrato;
-
-        URI todosHijosProfesor = uriInfo.getBaseUriBuilder().path(ProfesorController.class)
-        .path(ProfesorController.class,"obtenerHijosProfesorPorId").build(id);
-
-        _links.put("hijos", todosHijosProfesor.toString());
-    }
     public Integer getId() {
         return id;
     }
@@ -76,7 +62,21 @@ public class ProfesorTo {
     }
     public void setContrato(String contrato) {
         this.contrato = contrato;
+    }
+
+    public Map<String, String> get_links() {
+        return _links;
+    }
+
+    public void set_links(Map<String, String> _links) {
+        this._links = _links;
     } 
+
+    public void buildURI(UriInfo uriInfo){
+        URI todosHijosProfesor = uriInfo.getBaseUriBuilder().path(ProfesorController.class)
+        .path(ProfesorController.class,"obtenerHijosProfesorPorId").build(id);
+        _links.put("hijos", todosHijosProfesor.toString());
+    }
 
     
 

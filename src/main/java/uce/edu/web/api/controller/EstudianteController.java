@@ -24,6 +24,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
 import uce.edu.web.api.repository.modelo.Estudiante;
 import uce.edu.web.api.repository.modelo.Hijo;
+import uce.edu.web.api.repository.modelo.HijoProfesor;
 import uce.edu.web.api.service.IEstudianteService;
 import uce.edu.web.api.service.IHijoService;
 import uce.edu.web.api.service.mapper.EstudianteMapper;

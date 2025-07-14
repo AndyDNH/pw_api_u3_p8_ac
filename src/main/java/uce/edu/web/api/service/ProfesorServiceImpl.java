@@ -7,6 +7,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.core.UriInfo;
 import uce.edu.web.api.repository.IProfesorRepo;
 import uce.edu.web.api.repository.modelo.Profesor;
+import uce.edu.web.api.service.mapper.ProfesorMapper;
 import uce.edu.web.api.service.to.ProfesorTo;
 
 @ApplicationScoped
@@ -16,11 +17,12 @@ public class ProfesorServiceImpl implements IProfesorService{
     private IProfesorRepo profesorRepo;
 
     @Override
-    public ProfesorTo buscarPorId(Integer id, UriInfo uriInfo) {
-        Profesor p = this.profesorRepo.recuperaProfesorPorId(id);
-        ProfesorTo p1 = new ProfesorTo(p.getId(), p.getNombre(), p.getApellido(),
-         p.getCorreo(), p.getMateria(), p.getSalario(), p.getContrato(), uriInfo);
-        return p1;  
+    public Profesor buscarPorId(Integer id) {
+        // Profesor p = this.profesorRepo.recuperaProfesorPorId(id);
+        // ProfesorTo p1 = new ProfesorTo(p.getId(), p.getNombre(), p.getApellido(),
+        //  p.getCorreo(), p.getMateria(), p.getSalario(), p.getContrato(), uriInfo);
+        // return p1;  
+        return this.profesorRepo.recuperaProfesorPorId(id);
     }
 
     @Override
@@ -29,18 +31,18 @@ public class ProfesorServiceImpl implements IProfesorService{
     }
 
     @Override
-    public void actualizarProfesor(Profesor profesor) {
-        profesorRepo.actualizarProfesor(profesor);
+    public void actualizarProfesor(ProfesorTo profesorTo) {
+        profesorRepo.actualizarProfesor(ProfesorMapper.toEntity(profesorTo));
     }
 
     @Override
-    public void actualizarProfesorParcial(Profesor profesor) {
-        profesorRepo.actualizarProfesorParcial(profesor);
+    public void actualizarProfesorParcial(ProfesorTo profesorTo) {
+        profesorRepo.actualizarProfesorParcial(ProfesorMapper.toEntity(profesorTo));
     }
 
     @Override
-    public void insertarProfesor(Profesor profesor) {
-        profesorRepo.insertar(profesor);
+    public void insertarProfesor(ProfesorTo profesorTo) {
+        profesorRepo.insertar(ProfesorMapper.toEntity(profesorTo));
     }
 
     @Override

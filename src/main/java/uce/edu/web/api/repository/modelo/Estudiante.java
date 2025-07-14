@@ -30,6 +30,7 @@ public class Estudiante {
     private LocalDateTime fechaNacimiento;
     @Column(name = "estu_genero")
     private String genero;
+    
     @OneToMany(mappedBy = "estudiante")
     private List<Hijo> hijos;
     
