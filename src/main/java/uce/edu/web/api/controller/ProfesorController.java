@@ -40,7 +40,7 @@ public class ProfesorController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response consultarPorId(@PathParam("id") Integer id,@Context UriInfo uriInfo) {
+    public Response consultarPorId(@PathParam("id") Integer id, @Context UriInfo uriInfo) {
         ProfesorTo profe = ProfesorMapper.toTo(this.profesorService.buscarPorId(id));
         profe.buildURI(uriInfo);
         return Response.status(228).entity(profe).build();

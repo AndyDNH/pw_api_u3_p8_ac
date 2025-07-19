@@ -14,9 +14,11 @@ uce\edu\web\api\service\to\ProfesorTo.class
 uce\edu\web\api\service\IHijoService.class
 uce\edu\web\api\repository\ProfesorRepoImpl.class
 uce\edu\web\api\service\IProfesorService.class
+uce\edu\web\api\service\HijoProfesorServiceImpl.class
 uce\edu\web\api\service\mapper\EstudianteMapper.class
 uce\edu\web\api\repository\IProfesorRepo.class
 uce\edu\web\api\controller\ProfesorController.class
+uce\edu\web\api\service\IHIjoProfesorService.class
 uce\edu\web\api\repository\HijoRepo.class
 uce\edu\web\api\service\mapper\ProfesorMapper.class
 uce\edu\web\api\service\to\EstudianteTo.class
@@ -24,5 +26,6 @@ uce\edu\web\api\repository\HijoRepoImpl.class
 uce\edu\web\api\service\ProfesorServiceImpl.class
 uce\edu\web\api\service\IEstudianteService.class
 uce\edu\web\api\controller\EstudianteController.class
+uce\edu\web\api\controller\TokenController.class
 uce\edu\web\api\repository\EstudianteRepoImpl.class
 uce\edu\web\api\repository\IHijoProfesorRepo.class
